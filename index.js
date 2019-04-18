@@ -1,7 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 80
+var express = require('express')
+var app = express()
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.set('port', (process.env.PORT || 5000))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.get('/', function(request, response) {
+    response.send('Hello World!')
+})
+
+app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
+})
